@@ -1,0 +1,9 @@
+{"op": "put", "partition": "east", "id": "c", "key": "acct-A", "time": 10, "value": 300}
+{"op": "remove", "id": "c"}
+{"op": "advance", "partition": "east", "time": 31}
+{"op": "advance", "partition": "west", "time": 31}
+{"op": "put", "partition": "west", "id": "d", "key": "acct-A", "time": 10, "value": 400}
+{"op": "remove", "id": "b"}
+{"op": "put", "partition": "east", "id": "c", "key": "acct-A", "time": 10, "value": 300}
+{"op": "remove", "id": "a"}
+{"op": "advance", "partition": "west", "time": 30}

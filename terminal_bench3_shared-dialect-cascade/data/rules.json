@@ -1,0 +1,86 @@
+[
+  {
+    "id": "pv",
+    "src": "p",
+    "dst": "b",
+    "left": "V",
+    "right": "V"
+  },
+  {
+    "id": "tv",
+    "src": "t",
+    "dst": "d",
+    "left": "V",
+    "right": "V"
+  },
+  {
+    "id": "kv",
+    "src": "k",
+    "dst": "g",
+    "left": "V",
+    "right": "V"
+  },
+  {
+    "id": "bv",
+    "src": "b",
+    "dst": "v",
+    "left": "V",
+    "right": ""
+  },
+  {
+    "id": "dr",
+    "src": "d",
+    "dst": "r",
+    "left": "V",
+    "right": "V"
+  },
+  {
+    "id": "sh",
+    "src": "s",
+    "dst": "h",
+    "left": "#",
+    "right": ""
+  },
+  {
+    "id": "ae",
+    "src": "a",
+    "dst": "e",
+    "left": "",
+    "right": "i"
+  },
+  {
+    "id": "ei",
+    "src": "e",
+    "dst": "i",
+    "left": "",
+    "right": "#"
+  },
+  {
+    "id": "np",
+    "src": "n",
+    "dst": "m",
+    "left": "",
+    "right": "p"
+  },
+  {
+    "id": "hv",
+    "src": "h",
+    "dst": "",
+    "left": "V",
+    "right": "V"
+  },
+  {
+    "id": "sync",
+    "src": "i",
+    "dst": "",
+    "left": "C",
+    "right": "C"
+  },
+  {
+    "id": "gk",
+    "src": "g",
+    "dst": "k",
+    "left": "",
+    "right": "#"
+  }
+]
