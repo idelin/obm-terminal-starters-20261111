@@ -1,0 +1,12 @@
+PRAGMA foreign_keys=ON;
+CREATE TABLE settings(horizon INTEGER NOT NULL);
+CREATE TABLE machines(id TEXT PRIMARY KEY);
+CREATE TABLE orders(id TEXT PRIMARY KEY,weight INTEGER NOT NULL,release INTEGER NOT NULL,due INTEGER NOT NULL,operations TEXT NOT NULL,materials TEXT NOT NULL,status TEXT NOT NULL);
+CREATE TABLE lots(id TEXT PRIMARY KEY,material TEXT NOT NULL,qty INTEGER NOT NULL,expiry INTEGER NOT NULL,quarantined INTEGER NOT NULL);
+CREATE TABLE downtime(machine TEXT,start INTEGER,end INTEGER);
+CREATE TABLE dispatch_runs(run_id TEXT PRIMARY KEY,result TEXT NOT NULL);
+CREATE TABLE reservations(run_id TEXT NOT NULL,order_id TEXT NOT NULL,material TEXT NOT NULL,lot_id TEXT NOT NULL,qty INTEGER NOT NULL,PRIMARY KEY(run_id,order_id,material,lot_id),FOREIGN KEY(run_id) REFERENCES dispatch_runs(run_id));
+CREATE TABLE scheduled(run_id TEXT NOT NULL,order_id TEXT NOT NULL,operation INTEGER NOT NULL,machine TEXT NOT NULL,start INTEGER NOT NULL,end INTEGER NOT NULL,PRIMARY KEY(run_id,order_id,operation),FOREIGN KEY(run_id) REFERENCES dispatch_runs(run_id));
+CREATE VIEW remaining_stock AS SELECT l.id,l.material,l.expiry,l.quarantined,l.qty-COALESCE((SELECT SUM(r.qty) FROM reservations r WHERE r.lot_id=l.id),0) AS remaining FROM lots l;
+CREATE VIEW dispatch_lots AS SELECT id,material,remaining AS qty,expiry FROM remaining_stock WHERE quarantined=0 AND remaining>0;
+CREATE VIEW dispatch_downtime AS SELECT machine,start,end FROM downtime UNION ALL SELECT machine,start,end FROM scheduled;
